@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
             const itemsNumber = response.headers['content-length']
             const members = manageIncorrectData(response.data)
             return {
-                data: members,
+                members,
                 pagination: {
                     pages: Math.ceil(itemsNumber / page_size)
                 }
