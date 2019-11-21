@@ -1,9 +1,9 @@
-import React from 'react';
-import fetch from 'isomorphic-fetch';
+import React from 'react'
+import fetch from 'isomorphic-fetch'
 
 async function onClick () {
-  const data = await fetch('http://localhost:5000/api/hello');
-  alert((await data.json()).message);
+  const data = await fetch('http://localhost:5000/api/members?page=2&page_size=2')
+   console.log( await data.json())
 }
 
 function App() {
@@ -20,4 +20,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
