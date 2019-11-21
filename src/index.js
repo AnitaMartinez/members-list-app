@@ -6,8 +6,6 @@ import createSagaMiddleware from 'redux-saga'
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './store/reducers'
 import mySaga from './store/sagas'
-
-import './index.css';
 import App from './App';
 
 const sagaMiddleware = createSagaMiddleware()

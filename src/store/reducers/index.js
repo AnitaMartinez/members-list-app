@@ -1,6 +1,7 @@
 
 const initialState = {
-    members: []
+    members: [],
+    pages: null
 }
 
 const members = (state = initialState, action) => {
@@ -8,7 +9,8 @@ const members = (state = initialState, action) => {
         case 'SET_MEMBERS': 
             return {
                 ...state,
-                members: action.members
+                members: action.members,
+                pages: action.pages
             }
         default: 
             return state

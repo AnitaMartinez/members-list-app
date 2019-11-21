@@ -2,27 +2,30 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getMembers } from './store/actions'
+import { CardsList } from './components'
 
-const Members = ({getMembers}) => {
+const Members = ({getMembers, members}) => {
 
   useEffect((getMembers), [])
 
-
   return (
-    <div></div>
+    <div>
+      <CardsList members={members}/>
+    </div>
   );
 }
 
 Members.propTypes = {
     getMembers: PropTypes.func.isRequired,
+    members: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 
 const mapStateToProps = (state) => ({
-  members: state.members.members,
+  members: state.members,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    getMembers: pagination => { dispatch(getMembers(pagination)) }, // TODO: ver si esto es necesario escribirlo así
+    getMembers: pagination => { dispatch(getMembers(pagination)) },
 })
 
 export default connect(

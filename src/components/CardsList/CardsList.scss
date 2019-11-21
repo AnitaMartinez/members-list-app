@@ -1,0 +1,17 @@
+
+@import '../../theme/breakpoints';
+
+
+.CardsList {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    justify-items: center;
+
+    @media all and (max-width: $mq-md) {
+        grid-template-columns: 1fr 1fr;
+    }
+    @media all and (max-width: $mq-sm) {
+        grid-template-columns: 1fr;
+    }
+}

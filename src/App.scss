@@ -1,0 +1,31 @@
+@import './theme/general';
+@import './theme/variables';
+
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+  font-size: 14px;
+  color: $font-color;
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  color: $brand-color;
+  width: 50%;
+  .title {
+    margin: 0;
+  }
+  .logo {
+    width: 190px;
+  }
+}
+
+.Main {
+  padding: 30px;
+  background-color: $brand-color;
+}
