@@ -10,12 +10,18 @@ body {
   color: $font-color;
 }
 
+.App {
+  max-width: 1250px;
+  margin: auto;
+}
+
 .Header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
   color: $brand-color;
+  border-bottom: 1px solid $brand-color;
   width: 50%;
   .title {
     margin: 0;
@@ -27,5 +33,4 @@ body {
 
 .Main {
   padding: 30px;
-  background-color: $brand-color;
 }

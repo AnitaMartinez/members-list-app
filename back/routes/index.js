@@ -1,31 +1,39 @@
 const express = require('express');
-const axios = require('axios')
 const router = express.Router();
-const { manageIncorrectData } = require('../utils')
+// const { manageIncorrectData } = require('../utils')
+const MongoClient = require('mongodb').MongoClient
+
 
 router.get('/', (req, res) => {
-
+    
     const { page, page_size } = req.query
+    const pageNumber = parseInt(page)
+    const pageSize = parseInt(page_size)
+    const url = 'mongodb://localhost:27017';
+    const dbName = 'teamMembers';
 
-    axios.get(`http://work.mediasmart.io/?page=${page}&page_size=${page_size}`, {
-        headers: { Authorization: 'mediasmart2019'},
-    })
-        .then(response => {
-            const itemsNumber = response.headers['content-length']
-            const members = manageIncorrectData(response.data)
-            return {
-                members,
-                pagination: {
-                    pages: Math.ceil(itemsNumber / page_size)
-                }
+    MongoClient.connect(url, (err, client) => {
+        if(!err){
+            const col = client.db(dbName).collection('members')
+            const options = {
+                "limit": pageSize,
+                "skip": pageNumber * pageSize
             }
-        })
-        .then(data => {
-            res.json(data)
-        })
-        .catch(error => {
-            console.log(error)
-        })
+            col.find({}, options).toArray((err, members) => {
+                if (err) {
+                    console.log('Error fetching data from database', err)
+                } else {
+                    res.json({members, pagination: {pages: 1}}) // TODO: pages: itemsNumber / page_sizes
+                }
+            })
+            client.close()
+        }
+    })
 })
 
 module.exports = router
+
+
+
+
+
