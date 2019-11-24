@@ -1,7 +1,11 @@
 
 const initialState = {
     members: [],
-    pages: null
+    pagination: {
+        currentPage: 1,
+        itemsPerPage: 6,
+        pages: null
+    }
 }
 
 const members = (state = initialState, action) => {
@@ -10,7 +14,11 @@ const members = (state = initialState, action) => {
             return {
                 ...state,
                 members: action.members,
-                pages: action.pages
+                pagination: {
+                    ...state.pagination, 
+                    currentPage: action.pagination.page, 
+                    pages: action.pagination.pages
+                }
             }
         default: 
             return state

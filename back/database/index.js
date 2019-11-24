@@ -14,7 +14,7 @@ const saveInDb = data => {
     })
 }
 
-const getMembersFromDb = (pageNumber, pageSize) => {
+const getPaginatedMembers = (pageNumber, pageSize) => {
     return new Promise((resolve, reject) => {
         MongoClient.connect(url, (err, client) => {
             if(!err){
@@ -28,7 +28,7 @@ const getMembersFromDb = (pageNumber, pageSize) => {
                         console.log('ERROR reading from database', err.message, err.data)
                         reject('Error', err)
                     } else {
-                        resolve({members, pagination: {pages: 1}})  // TODO: pages: itemsNumber / page_sizes
+                        resolve({members, pagination: {pages: 10}})  // TODO: pages: itemsNumber / page_sizes
                     }
                 })
                 client.close()
@@ -39,5 +39,5 @@ const getMembersFromDb = (pageNumber, pageSize) => {
 
 module.exports = {
     saveInDb,
-    getMembersFromDb
+    getPaginatedMembers
 }

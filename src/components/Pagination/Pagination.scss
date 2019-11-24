@@ -1,0 +1,36 @@
+@import '../../theme/breakpoints';
+@import '../../theme/variables';
+
+.Pagination {
+    display: flex;
+    margin-top: 45px;
+    display: flex;
+    justify-content: center;
+
+    @media all and (min-width: $mq-sm) {
+        margin-top: 50px;
+    }
+
+    @media all and (min-width: $mq-lg) {
+        margin-top: 60px;
+    }
+
+    .arrow-button {
+        border-bottom: 1px solid $light-color;
+        transition: border-bottom .3s ease-in-out; 
+    }
+
+    .arrow-button:hover {
+        border-bottom: 1px solid #000;
+    }
+
+    .arrow {
+        width: 20px;
+        height: auto;
+    }
+
+    .text {
+        margin: 0 20px;
+        font-weight: 600;
+    }
+}

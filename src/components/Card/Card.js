@@ -8,12 +8,14 @@ export const Card = ({member}) => {
         <div className="top-card">
           <img className="image" src={`${member.image}`} alt={`${member.name}`}></img>  {/* TODO: Default image */}
           {
-              member.name && <p>{member.name}</p> 
+              member.name ? <p>{member.name}</p> 
+                : <p className="replacement-text">Sorry, name not available!</p> 
           }
         </div>
         <div className="bottom-card"> 
           {
-              member.age && <p>{`${member.age} years old`}</p>
+              member.age ? <p>{`${member.age} years old`}</p>
+                : <p className="replacement-text">Sorry, years not available!</p> 
           }
         </div>
       </button>

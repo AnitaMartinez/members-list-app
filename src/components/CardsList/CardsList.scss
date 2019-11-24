@@ -1,17 +1,19 @@
-
 @import '../../theme/breakpoints';
-
 
 .CardsList {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: auto;
     justify-items: center;
+    grid-gap: 30px;
 
-    @media all and (max-width: $mq-md) {
+    @media all and (min-width: $mq-sm) {
         grid-template-columns: 1fr 1fr;
+        grid-gap: 50px;
     }
-    @media all and (max-width: $mq-sm) {
-        grid-template-columns: 1fr;
+
+    @media all and (min-width: $mq-lg) {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 60px;
     }
 }

@@ -1,36 +1,61 @@
 @import './theme/general';
 @import './theme/variables';
+@import './theme/breakpoints';
 
 body {
   margin: 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: $font-family;
   font-weight: 400;
   line-height: 1.4;
   font-size: 14px;
   color: $font-color;
 }
 
-.App {
-  max-width: 1250px;
-  margin: auto;
-}
-
 .Header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
   color: $brand-color;
-  border-bottom: 1px solid $brand-color;
-  width: 50%;
-  .title {
-    margin: 0;
+  background-color: $brand-color;
+  color: $light-color;
+
+  .content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1250px;
+    margin: auto;
+    width: 100%;
+    padding: 20px 25px;
+
+    @media all and (min-width: $mq-sm) {
+      padding: 20px 35px;
+    }
+  
+    @media all and (min-width: $mq-lg) {
+      padding: 20px 45px;
+    }
   }
+
+  .title {
+    font-family: $font-family-title;
+    font-size: 24px;
+    margin: 0;
+    font-weight: 700;
+  }
+
   .logo {
-    width: 190px;
+    width: 140px;
   }
 }
 
 .Main {
-  padding: 30px;
+  padding: 40px 25px;
+  max-width: 1250px;
+  margin: auto;
+
+  @media all and (min-width: $mq-sm) {
+    padding: 50px 35px;
+  }
+
+  @media all and (min-width: $mq-lg) {
+    padding: 70px 45px;
+  }
 }
