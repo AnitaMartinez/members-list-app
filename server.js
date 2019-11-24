@@ -4,9 +4,10 @@ var cors = require('cors')
 const app = express()
 const axios = require('axios')
 var cron = require('node-cron')
-const port = process.env.PORT || 5000
 const routes = require('./back/routes')
-const { saveInBD } = require('./back/db')
+const { saveInDb } = require('./back/database')
+const { manageIncorrectData } = require('./back/utils')
+const port = process.env.PORT || 5000
 
 app.use(cors())
 app.use(bodyParser.json())
@@ -17,8 +18,12 @@ function populateDBWithMembers() {
     axios.get(`http://work.mediasmart.io/?page=1&page_size=900`, {
         headers: { Authorization: 'mediasmart2019'},
     })
-    .then(response => {
-        saveInBD(response.data)
+    .then(async response => {
+        const updatedData = await manageIncorrectData(response.data)
+        return updatedData
+    })
+    .then(data => {
+        saveInDb(data)
     })
     .catch(error => {
         console.log('ERROR fetching data to mediasmart', error.message, error.data)

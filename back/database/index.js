@@ -3,7 +3,7 @@ const MongoClient = require('mongodb').MongoClient
 const url = 'mongodb://localhost:27017';
 const dbName = 'teamMembers';
 
-const saveInBD = data => {
+const saveInDb = data => {
     MongoClient.connect(url, (err, client) => {
         if(!err){
             const col = client.db(dbName).collection('members')
@@ -14,7 +14,7 @@ const saveInBD = data => {
     })
 }
 
-const getMembersFromBD = (pageNumber, pageSize) => {
+const getMembersFromDb = (pageNumber, pageSize) => {
     return new Promise((resolve, reject) => {
         MongoClient.connect(url, (err, client) => {
             if(!err){
@@ -38,6 +38,6 @@ const getMembersFromBD = (pageNumber, pageSize) => {
 }
 
 module.exports = {
-    saveInBD,
-    getMembersFromBD
+    saveInDb,
+    getMembersFromDb
 }
