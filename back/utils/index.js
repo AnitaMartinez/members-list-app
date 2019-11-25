@@ -3,11 +3,9 @@ const axios = require('axios')
 const manageIncorrectData = members => {
     return new Promise(async (resolve, reject) => {
         let updatedMembers = []
-        
-        for(let i = 0; i < members.length; i++) {
-            
-            let object = {} 
 
+        for(let i = 0; i < members.length; i++) {
+            let object = {} 
             if(members[i].age) {
                 if(!Number.isInteger(members[i].age)) {
                     object.age = null
@@ -35,9 +33,8 @@ const manageIncorrectData = members => {
             if(members[i].image) {
                 object.image = await updateUrl(members[i].image)
             }
-
+            if(i % 20 === 0) console.log('Image updating, number item:', i, object.image)
             updatedMembers.push(object)
-
             if(i === (members.length - 1)) {
                 resolve(updatedMembers)
             }

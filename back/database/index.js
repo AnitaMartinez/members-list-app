@@ -7,9 +7,19 @@ const saveInDb = data => {
     MongoClient.connect(url, (err, client) => {
         if(!err){
             const col = client.db(dbName).collection('members')
-            col.deleteMany({}, (err, result) => { if(err) console.log(err) })
-            col.insertMany(data, (err, result) => {if(err) console.log(err)}) 
-            client.close()
+            col.deleteMany({}, (err, result) => { 
+                if(err) {
+                    console.log('Error removing items from db', err) 
+                } else {
+                    col.insertMany(data, (err, result) => {
+                        if(err) {
+                            console.log('Error inserting items to db', err)
+                            client.close()
+                        }
+                    })
+                }
+            })
+            
         }
     })
 }
@@ -30,8 +40,8 @@ const getPaginatedMembers = (pageNumber, pageSize) => {
                     } else {
                         resolve({members, pagination: {pages: 10}})  // TODO: pages: itemsNumber / page_sizes
                     }
+                    client.close()
                 })
-                client.close()
             }
         })
     })
