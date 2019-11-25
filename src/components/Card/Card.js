@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './Card.scss'
 
-export const Card = ({member}) => {
+export const Card = ({member, onClick}) => {
     return (
-      <button className="Card">
+      <button className="Card" onClick={onClick}>
         <div className="top-card">
-          <img className="image" src={`${member.image}`} alt={`${member.name}`}></img>  {/* TODO: Default image */}
+          <img className="image" src={`${member.image}`} alt={`${member.name}`}></img>
           {
               member.name ? <p>{member.name}</p> 
                 : <p className="replacement-text">Sorry, name not available!</p> 
@@ -28,4 +28,5 @@ Card.propTypes = {
     name: PropTypes.string,
     age: PropTypes.number,
   }).isRequired,
+  onClick: PropTypes.func.isRequired
 }

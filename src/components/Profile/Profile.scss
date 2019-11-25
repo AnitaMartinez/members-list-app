@@ -1,0 +1,18 @@
+.Profile {
+
+    .top-container {
+        display: flex;
+    }
+
+    .image {
+        width: 100px;
+        height: auto;
+        border-radius: 50%;
+        margin-right: 20px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    .replacement-text {
+        font-style: italic;
+    }
+}
