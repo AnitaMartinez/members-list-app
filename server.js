@@ -22,10 +22,10 @@ const populateDbWithMembers = async () => {
 
 populateDbWithMembers()
 
-// At 01:00 on every day-of-week from Monday through Sunday
+// At 01:00 on every day-of-week from Monday to Sunday
 cron.schedule('00 01 * * 1-7', () => {
-    console.log('Updated Database')
     populateDbWithMembers()
+    console.log('Updated Database')
 }, {
     timezone: "Etc/UTC"
 });

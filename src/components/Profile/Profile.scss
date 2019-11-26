@@ -1,3 +1,5 @@
+@import '../../theme/breakpoints';
+
 .Profile {
 
     .top-container {
@@ -11,6 +13,11 @@
 
             p {
                 margin: 0;
+                font-size: 12px;
+
+                @media all and (min-width: $mq-xs) {
+                    font-size: 14px;
+                }
 
                 &:first-child {
                     margin-bottom: 10px;
@@ -20,11 +27,15 @@
     }
 
     .image {
-        width: 100px;
+        width: 80px;
         height: auto;
         border-radius: 50%;
         margin-right: 20px;
         box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+
+        @media all and (min-width: $mq-xs) {
+            width: 100px;
+        }
     }
 
     .replacement-text {

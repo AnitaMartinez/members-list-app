@@ -2,12 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './Card.scss'
 
-export const Card = ({member, onClick}) => (
+export const Card = ({member, onClick}) => {
+  const name = member.name && member.name.length > 80 ? `${member.name.substring(0, 50)}...` : member.name
+
+  return (
     <button className="Card" onClick={onClick}>
       <div className="top-card">
-        <img className="image" src={`${member.image}`} alt={`${member.name}`}></img>
+        <img className="image" src={`${member.image}`} alt="Member"></img>
         {
-            member.name ? <p>{member.name}</p> 
+            member.name ? <p>{name}</p> 
               : <p className="replacement-text">Sorry, name not available!</p> 
         }
       </div>
@@ -18,7 +21,9 @@ export const Card = ({member, onClick}) => (
         }
       </div>
     </button>
-)
+  )
+}
+
 
 Card.propTypes = {
   member: PropTypes.shape({

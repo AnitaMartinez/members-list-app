@@ -35,12 +35,12 @@ const members = (state = initialState, action) => {
         case 'SHOW_GLOBAL_ERROR': 
             return {
                 ...state,
-                loading: true
+                error: true
             }
         case 'HIDE_GLOBAL_ERROR': 
             return {
                 ...state,
-                loading: false
+                error: false
             }
         default: 
             return state

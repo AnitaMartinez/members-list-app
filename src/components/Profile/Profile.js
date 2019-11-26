@@ -8,37 +8,37 @@ export const Profile = ({content}) => (
           <img className="image" src={`${content.image}`} alt={`${content.name}`}></img>
           <div className="content-text">
             {
-                content.name ? (
-                  <p>
-                    <span className="featured-text">Name: </span>
-                    {content.name}
-                  </p>
-                ) : ( 
-                  <p className="replacement-text">Sorry, name not available!</p> 
-                )
+              content.name ? (
+                <p className="text">
+                  <span className="featured-text">Name: </span>
+                  {content.name}
+                </p>
+              ) : ( 
+                <p className="replacement-text">Sorry, name not available!</p> 
+              )
             }
             {
-                content.age ? (
-                  <p>
-                    <span className="featured-text">Age: </span>
-                    {content.age}
-                  </p>
-                ) : ( 
-                  <p className="replacement-text">Sorry, age not available!</p> 
-                )
+              content.age ? (
+                <p className="text">
+                  <span className="featured-text">Age: </span>
+                  {content.age}
+                </p>
+              ) : ( 
+                <p className="replacement-text">Sorry, age not available!</p> 
+              )
             }
           </div>
         </div>
         {
-                content.bio ? (
-                  <Fragment>
-                    <p className="featured-text bio">Bio</p>
-                    <p>{content.bio}</p>
-                  </Fragment>
-                ) : ( 
-                  <p className="replacement-text">Sorry, bio not available!</p> 
-                )
-            }
+          content.bio ? (
+            <Fragment>
+              <p className="featured-text bio">Bio</p>
+              <p>{content.bio}</p>
+            </Fragment>
+          ) : ( 
+            <p className="replacement-text">Sorry, bio not available!</p> 
+          )
+        }
     </div>
 )
 

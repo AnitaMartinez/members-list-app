@@ -11,7 +11,7 @@ const getMembersByPage = (pageNumber = 1) => {
                 resolve(response.data)
             })
             .catch(error => {
-                console.log('Error fetching data from mediasmart', error.message, error.data)
+                console.log('Error fetching data to mediasmart', error.message, error.data)
                 reject(error)
             })
     })

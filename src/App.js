@@ -1,5 +1,5 @@
 import React from 'react'
-import MembersConnected from './MembersConnected';
+import MembersListConnected from './connectedComponents/MembersListConnected'
 import './App.scss'
 import Logo from './assets/images/logo.png'
 
@@ -13,10 +13,10 @@ function App() {
         </div>
       </header>
       <main className="Main">
-        <MembersConnected/>
+        <MembersListConnected/>
       </main>
     </div>
-  );
+  )
 }
 
 export default App

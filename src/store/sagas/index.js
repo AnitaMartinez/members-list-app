@@ -10,7 +10,6 @@ function* getMembers({ pagination, withLoaders }) {
     const { data, error } = yield call(Api.getMembers, { page: nextPage, itemsPerPage })
     if(error) {
         yield put({type: 'SHOW_GLOBAL_ERROR'})
-        console.log('Error', error.message)
     } else if (data && data.members && data.pagination) {
         const { members, pagination } = data
         yield put({ 

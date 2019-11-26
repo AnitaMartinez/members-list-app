@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getMembers } from './store/actions'
-import { CardsList, Pagination, Modal, Profile } from './components'
-import Spinner from './assets/icons/spinner.svg'
+import { getMembers } from '../store/actions'
+import { CardsList, Pagination, Modal, Profile } from '../components'
+import Spinner from '../assets/icons/spinner.svg'
 
 const Members = ({getMembers, members, currentPage, pages, loading, error}) => {
 
@@ -18,6 +18,10 @@ const Members = ({getMembers, members, currentPage, pages, loading, error}) => {
 
   const handleClickCard = member => {
     setCurrentMember(member)
+    showModal(!modalVisible) 
+  }
+
+  const handleClickModal = () => {
     showModal(!modalVisible) 
   }
 
@@ -43,7 +47,7 @@ const Members = ({getMembers, members, currentPage, pages, loading, error}) => {
           currentPage={currentPage}
           pages={pages}
       />
-      <Modal visible={modalVisible} onClose={handleClickCard}>
+      <Modal visible={modalVisible} onClose={handleClickModal}>
         <Profile content={currentMember}/>
       </Modal>
     </div>

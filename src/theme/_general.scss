@@ -1,3 +1,14 @@
+@import './theme/variables';
+
+body {
+	margin: 0;
+	font-family: $font-family;
+	font-weight: 400;
+	line-height: 1.4;
+	font-size: 14px;
+	color: $font-color;
+}
+
 button {
 	background: none;
 	color: inherit;

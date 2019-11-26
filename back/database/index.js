@@ -31,8 +31,10 @@ const savePagination = (colPagination, data, done) => {
         if(err) {
             console.log('Error removing pagination from db', err) 
         } else {
-            colPagination.insertOne({itemsNumber: data.length})
-            done()
+            colPagination.insertOne({itemsNumber: data.length}, (err, result) => {
+                if(err) console.log('Error removing pagination from db', err) 
+                done()
+            })
         }
     })
 }
@@ -49,13 +51,11 @@ const getPaginatedMembers = (pageNumber, pageSize) => {
                 }
                 col.find({}, options).toArray((err, members) => {
                     if (err) {
-                        console.log('ERROR reading from database', err.message, err.data)
-                        reject('Error', err)
+                        reject('ERROR reading from database', err)
                     } else {
                         colPagination.find({}, {itemsNumber: 1}).toArray((err, result) => {
                             if(err) {
-                                console.log('ERROR reading from database', err.message, err.data)
-                                reject('Error', err)
+                                reject('ERROR reading from database', err)
                             } else {
                                 const itemsNumber = result.length > 0 && result[0].itemsNumber && result[0].itemsNumber
                                 resolve({members, pagination: {pages: Math.floor(itemsNumber / pageSize)}})
