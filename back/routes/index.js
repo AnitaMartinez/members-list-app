@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
     const pageNumber = parseInt(page)
     const pageSize = parseInt(page_size)
     const data = await getPaginatedMembers(pageNumber, pageSize)
-     res.json(data)
+    res.json(data)
 })
 
 module.exports = router

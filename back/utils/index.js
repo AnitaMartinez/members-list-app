@@ -1,5 +1,8 @@
 const axios = require('axios')
 
+const isInteger = value => Number.isInteger(value)
+const isString = value => typeof value === 'string'
+
 const manageIncorrectData = members => {
     return new Promise(async (resolve, reject) => {
         let updatedMembers = []
@@ -7,24 +10,24 @@ const manageIncorrectData = members => {
         for(let i = 0; i < members.length; i++) {
             let object = {} 
             if(members[i].age) {
-                if(!Number.isInteger(members[i].age)) {
-                    object.age = null
-                } else {
+                if(isInteger(members[i].age)) {
                     object.age = members[i].age
+                } else {
+                    object.age = null
                 }
             } 
             if(members[i].bio) {
-                if(typeof members[i].bio !== 'string') {
-                    object.bio = null
-                } else {
+                if(isString(members[i].bio)) {
                     object.bio = members[i].bio
+                } else {
+                    object.bio = null
                 }
             }
             if(members[i].name) {
-                if(typeof members[i].name !== 'string') {
-                    object.name = null
-                } else {
+                if(isString(members[i].bio)) {
                     object.name = members[i].name
+                } else {
+                    object.name = null
                 }
             }
             if(members[i].id) {
@@ -35,6 +38,7 @@ const manageIncorrectData = members => {
             }
             if(i % 20 === 0) console.log('Image updating, number item:', i, object.image)
             updatedMembers.push(object)
+
             if(i === (members.length - 1)) {
                 resolve(updatedMembers)
             }
