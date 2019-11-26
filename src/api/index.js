@@ -5,7 +5,10 @@ export const Api = {
           fetch(`http://localhost:5000/api/members?page=${page}&page_size=${itemsPerPage}`)
             .then(response => response.json())
             .then(data => resolve({ data }))
-            .catch(error => reject({ error }))
+            .catch(error => {
+                console.log('Error fetching local api:', error.message)
+                resolve({ error })
+            })
         })
     }
 }

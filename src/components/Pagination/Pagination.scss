@@ -6,6 +6,7 @@
     margin-top: 45px;
     display: flex;
     justify-content: center;
+    align-items: center;
 
     @media all and (min-width: $mq-sm) {
         margin-top: 50px;
@@ -15,22 +16,45 @@
         margin-top: 60px;
     }
 
-    .arrow-button {
-        border-bottom: 1px solid $light-color;
-        transition: border-bottom .3s ease-in-out; 
-    }
-
     .arrow-button:hover {
         border-bottom: 1px solid #000;
-    }
-
-    .arrow {
-        width: 20px;
-        height: auto;
     }
 
     .text {
         margin: 0 20px;
         font-weight: 600;
+    }
+
+    .arrow {
+        width: 30px;
+        height: auto;
+
+        path {
+            transition: all .3s ease-in-out;
+            fill: $brand-color;
+        }
+
+        &:hover {
+            path {
+                fill: $brand-color-darken;
+            }
+        }
+
+        &.disabled {
+            cursor: not-allowed;
+            path {
+                fill: #808080;
+            }
+
+            &:hover,
+            &:focus,
+            &:active {
+                path {
+                    fill: #808080;
+                }
+            }
+        }
+
+       
     }
 }

@@ -1,10 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './Pagination.scss'
-import ArrowLeft from '../../assets/images/arrow-left.svg'
-import ArrowRight from '../../assets/images/arrow-right.svg'
-import ArrowLeftDisabled from '../../assets/images/arrow-left-disabled.svg'
-import ArrowRightDisabled from '../../assets/images/arrow-right-disabled.svg'
+import { ReactComponent as ArrowLeft } from '../../assets/icons/arrow-left.svg'
+import { ReactComponent as ArrowRight } from '../../assets/icons/arrow-right.svg'
 
 export const Pagination = ({onChangePage, currentPage, pages}) => {
     const isFirstPage = currentPage === 1
@@ -13,29 +11,23 @@ export const Pagination = ({onChangePage, currentPage, pages}) => {
     return (
         <div className="Pagination">
             <button 
-                onClick={() => onChangePage({previous: true})} 
+                onClick={() => onChangePage({pagination: {previous: true}})} 
                 disabled={isFirstPage}
-                className={isFirstPage ? '' : 'arrow-button'}
             >
-                <img 
-                    src={isFirstPage ? ArrowLeftDisabled : ArrowLeft } 
-                    alt="Arrow left" 
-                    className="arrow"
-                >
-                </img>
+                <ArrowLeft 
+                    title="Arrow left" 
+                    className={`arrow ${isFirstPage ? 'disabled': ''}`}
+                />
             </button>
             <span className="text">{`Page ${currentPage}`}</span>
             <button 
-                onClick={() => onChangePage({next: true})} 
+                onClick={() => onChangePage({pagination: {next: true}})} 
                 disabled={hasMorePages}
-                className={isFirstPage ? '' : 'arrow-button'}
             >
-                <img 
-                    src={hasMorePages ? ArrowRightDisabled: ArrowRight} 
-                    alt="Arrow right" 
-                    className="arrow"
-                >
-                </img>
+                <ArrowRight 
+                    title="Arrow right" 
+                    className={`arrow ${hasMorePages ? 'disabled': ''}`}
+                />
             </button>
         </div>
     )

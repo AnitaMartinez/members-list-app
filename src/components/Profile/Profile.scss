@@ -2,6 +2,21 @@
 
     .top-container {
         display: flex;
+        margin-bottom: 30px;
+
+        .content-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            p {
+                margin: 0;
+
+                &:first-child {
+                    margin-bottom: 10px;
+                }
+            }
+        }
     }
 
     .image {
@@ -14,5 +29,14 @@
 
     .replacement-text {
         font-style: italic;
+    }
+
+    .featured-text {
+        font-weight: 600;
+        text-transform: uppercase;
+
+        &.bio {
+            text-decoration: underline;
+        }
     }
 }

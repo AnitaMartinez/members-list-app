@@ -5,7 +5,9 @@ const initialState = {
         currentPage: 1,
         itemsPerPage: 6,
         pages: null
-    }
+    },
+    loading: true,
+    error: false
 }
 
 const members = (state = initialState, action) => {
@@ -19,6 +21,26 @@ const members = (state = initialState, action) => {
                     currentPage: action.pagination.page, 
                     pages: action.pagination.pages
                 }
+            }
+        case 'SHOW_GLOBAL_LOADING': 
+            return {
+                ...state,
+                loading: true
+            }
+        case 'HIDE_GLOBAL_LOADING': 
+            return {
+                ...state,
+                loading: false
+            }
+        case 'SHOW_GLOBAL_ERROR': 
+            return {
+                ...state,
+                loading: true
+            }
+        case 'HIDE_GLOBAL_ERROR': 
+            return {
+                ...state,
+                loading: false
             }
         default: 
             return state
