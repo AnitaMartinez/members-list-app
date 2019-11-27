@@ -22,8 +22,8 @@ const populateDbWithMembers = async () => {
 
 populateDbWithMembers()
 
-// At 01:00 on every day-of-week from Monday to Sunday
-cron.schedule('00 01 * * 1-7', () => {
+// At 01:00, every day
+cron.schedule('00 01 * * *', () => {
     populateDbWithMembers()
     console.log('Updated Database')
 }, {
